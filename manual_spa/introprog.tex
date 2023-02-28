@@ -767,7 +767,7 @@ Este comando guardará la variable \texttt{A} en el fichero \texttt{datos.txt}. M
 
 Cuando se exportan datos desde Matlab en formato ASCII, Matlab guarda tan solo los valores numéricos contenidos en las variables, pero no los nombres de éstas. Por otro lado, guarda tan solo ocho dígitos, por lo que habitualmente se pierde precisión. Es posible guardar  datos en formato ASCII, conservando toda la precisión, si añadimos al comando \texttt{save} el modificador \texttt{-DOUBLE}, 
 \begin{verbatim}
->>save nombre_Archivo matriz_1, matriz2, ... -ASCII -DOUBLE
+>>save nombre_Archivo matriz_1 matriz2 ... -ASCII -DOUBLE
 \end{verbatim}
 
 
@@ -3609,7 +3609,7 @@ En segundo lugar hemos empleado un nuevo comando gráfico; se trata del comando \
 \paragraph{loglog.} Análoga a las anteriores, \texttt{loglog(x,y)} representa \texttt{y} frente a \texttt{x} empleando en ambos ejes una escala logarítmica.
 
 
-\paragraph{polar.} Representa funciones en coordenadas polares \texttt{polar(theta,r}. La primera variable es un ángulo en radianes y la segunda el correspondiente radio. La figura \ref{fig:esp} muestra la espiral,
+\paragraph{polar.} Representa funciones en coordenadas polares \texttt{polar(theta,r)}. La primera variable es un ángulo en radianes y la segunda el correspondiente radio. La figura \ref{fig:esp} muestra la espiral,
 \begin{equation*}
 r=2\cdot\sqrt{\theta}
 \end{equation*}
@@ -3649,7 +3649,7 @@ Para el intervalo angular $[0,8\pi]$.
 \label{fig:sbs}
 \end{figure}
 
-\paragraph{hist.} Este comando permite dibujar el histograma de una colección de datos. El histograma es una forma de representar cuantas veces se repite un datos, o más exactamente cuantos datos de la colección caen dentro de un intervalo dado. La función \texttt{hist(x,n)} admite dos parámetros de entrada, un vector de datos \texttt{x} y un valor entero \texttt{n} que representa el número de intervalos en que se dividirá el rango de valores de \texttt{x}, para obtener el histograma. Si no se introduce esta segunda variable, Matlab por defecto divide el rango de los datos en 10 intervalos. Veamos un ejemplo de uso de hist, empleando los datos del ejemplo anterior relativos a número de coches por cada mil habitantes. Representaremos el histograma para un total de 213 países. Para tener una idea, del rango de los dato, calculamos el valor mínimo y máximo de los datos disponibles,
+\paragraph{hist.} Este comando permite dibujar el histograma de una colección de datos. El histograma es una forma de representar cuantas veces se repite un dato, o más exactamente cuantos datos de la colección caen dentro de un intervalo dado. La función \texttt{hist(x,n)} admite dos parámetros de entrada, un vector de datos \texttt{x} y un valor entero \texttt{n} que representa el número de intervalos en que se dividirá el rango de valores de \texttt{x}, para obtener el histograma. Si no se introduce esta segunda variable, Matlab por defecto divide el rango de los datos en 10 intervalos. Veamos un ejemplo de uso de hist, empleando los datos del ejemplo anterior relativos a número de coches por cada mil habitantes. Representaremos el histograma para un total de 213 países. Para tener una idea, del rango de los dato, calculamos el valor mínimo y máximo de los datos disponibles,
 \begin{verbatim}
 >> minimo=min(auto2007)
 minimo =
