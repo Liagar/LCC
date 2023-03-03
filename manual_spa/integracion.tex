@@ -555,6 +555,8 @@ El siguiente código implementa el método de Euler para resolver un problema de c
 function y=euler(fun,ya,a,b,h)
 % implimentacion del metodo de Euler para resolver el problema y'(t)=f(y,t)
 % con condición inicial ya
+% Admite funciones sobre un vector de variables, en ese caso las
+% condiciones iniciales serán también un vector
 %Uso: y=euler(fun,ya,a,b,h)
 %variables de entrada: fun, debe contener el nombre de una función (sera la
 %función f) entrecomillas. ya, condición inicial. a, instante de tiempo 
@@ -565,19 +567,20 @@ function y=euler(fun,ya,a,b,h)
 %lo elegante no es pasar el paso como he hecho aqui, sino calcularlo en
 %funcion de cuantos puntos de la solucion queremos en el intervalo...
 if a>=b
-    y='el intervalo debe ser creciente, para evitarse lios';
-    return
+y='el intervalo debe ser creciente, para evitarse lios';
+return
 end
 y=ya;
 paso=1;
 t(paso)=a;
 while t(paso)<=b
-    t(paso+1)=t(paso)+h;
-    y(paso+1)=y(paso)+h*feval(fun,t(paso),y(paso));
-    paso=paso+1;
+t(paso+1)=t(paso)+h;
+y(paso+1,:)=y(paso,:)+h*feval(fun,t(paso),y(paso,:));
+paso=paso+1;
 end
-% dibuja la solucion,
+%dibuja la solucion,
 plot(t,y)
+
 \end{lstlisting}
 
 Un ejemplo sencillo de problema de condiciones iniciales de primer orden, nos los suministra la ecuación diferencial de la carga y descarga de un condensador eléctrico. La figura \ref{fig:RC}, muestra un circuito eléctrico elemental formado por una resistencia $R$ en serie con un condensador $C$. \index{Circuito RC}
@@ -669,6 +672,52 @@ Tenemos un problema de valor inicial de segundo orden, con una ecuación en la qu
 \frac{dy}{dt}&=v_y \\
 \frac{dv_y}{dt}&=g-\frac{k}{m}\cdot y - \frac{\mu}{m}\cdot v_y 
 \end{align*}
+
+Ese sistema de ecuaciones de primer orden se puede resolver usando el método de Euler. Necesitamos definir una función de Matlab para representar el sistema de ecuaciones diferenciales
+
+\begin{lstlisting}
+function [dydt] = amortiguador(~,y)
+% y(1) posición
+% y(2) velocidad
+% k constante del muelle
+% mu coeficiente de rozamiento
+% g aceleración de la gravedad
+% m masa
+g=9.8;
+k=10.0;
+m=2.0;
+mu=0.5;
+dydt(1)=y(2);
+dydt(2)=g-(k/m)*y(1)-(mu/m)*y(2);
+end
+\end{lstlisting}
+
+Empleando la función descrita \texttt{euler('amortiguador',[0 0],0,50,0.01)} obtenemos la evolución temporal de la posición y la velocidad de la masa unida al resorte como puede verse en la figura \ref{fig:amortiguador1}. En esta figura se aprecia como la masa oscila en torno a la posición de equilibrio hasta que finalmente se para.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=12cm]{amortiguador_1.png}
+	\caption{Resultado de aplicar el método de Euler a una masa suspendida en vertical de un muelle con rozamiento.}
+	\label{fig:amortiguador1}
+\end{figure}
+
+Si cambiamos el valor de la constante del muelle a $k=100$ ($kg/s^2$) y volvemos a aplicar el método de Euler para resolver obtenemos el resultado mostrado en la figura \ref{fig:amortiguador2}. En la gráfica puede observarse que la masa comienza a oscilar con oscilaciones de amplitud creciente. Para analizar este comportamiento anómalo vamos a repetir el método de Euler reduciendo en un orden de magnitud el paso de integración. Si lo hacemos así obtenemos los resultados de la figura \ref{fig:amortiguador3}. Al reducir el paso vemos que la masa oscila en torno a la posición de equilibrio hasta que se estabiliza. El comportamiento observado en la figura \ref{fig:amortiguador2} se debe a errores de integración del algoritmo de Euler.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=12cm]{amortiguador_2.png}
+	\caption{Resultado de aplicar el método de Euler a una masa suspendida en vertical de un muelle con rozamiento $k=100$.}
+	\label{fig:amortiguador2}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=12cm]{amortiguador_3.png}
+	\caption{Resultado de aplicar el método de Euler a una masa suspendida en vertical de un muelle con rozamiento $k=100$ y paso $h=0.001$.}
+	\label{fig:amortiguador3}
+\end{figure}
+
+En la práctica se emplean algoritmos más precisos (y complejos) que el de Euler para resolver problemas de valor inicial, por ejemplo los métodos de Runge-Kutta.
 
 \subsection{Métodos de Runge-Kutta} \index{Método de Runge-Kutta}
 Si intentamos emplear polinomios de Taylor de grado superior, al empleado en el método de Euler, nos encontramos con la dificultad de obtener las derivadas sucesivas, con respecto al tiempo, de la función $f$. Así, si quisiéramos emplear el polinomio de Taylor de segundo grado, para la función x, tendríamos,

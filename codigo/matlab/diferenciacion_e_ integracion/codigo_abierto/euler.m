@@ -1,6 +1,8 @@
 function y=euler(fun,ya,a,b,h)
 % implimentacion del metodo de Euler para resolver el problema y'(t)=f(y,t)
 % con condición inicial ya
+% Admite funciones sobre un vector de variables, en ese caso las
+% condiciones iniciales serán también un vector
 %Uso: y=euler(fun,ya,a,b,h)
 %variables de entrada: fun, debe contener el nombre de una función (sera la
 %función f) entrecomillas. ya, condición inicial. a, instante de tiempo 
@@ -19,7 +21,7 @@ paso=1;
 t(paso)=a;
 while t(paso)<=b
     t(paso+1)=t(paso)+h;
-    y(paso+1)=y(paso)+h*feval(fun,t(paso),y(paso));
+    y(paso+1,:)=y(paso,:)+h*feval(fun,t(paso),y(paso,:));
     paso=paso+1;
 end
 %dibuja la solucion,
