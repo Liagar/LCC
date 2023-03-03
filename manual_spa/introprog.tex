@@ -44,7 +44,7 @@ a =21
 
 Podemos ver una variable como una región de la memoria del computador, donde un programa guarda una determina información; números, letras, etc. Una característica fundamenta de una variable es su nombre, ya que permite identificarla. \index{Variable! nombre} Como nombre para una variable se puede escoger cualquier combinación de letras y números, empezando siempre con una letra, en el caso de Matlab\footnote{Como se verá más adelante, Matlab tiene un conjunto de nombres de instrucciones y comandos ya definidos. Se debe evitar emplear dichos nombres, ya que de hacerlo se pierde acceso al comando de Matlab que representan}. Se puede además emplear el signo "\_". Matlab distingue entre mayúsculas y minúsculas, por lo que si elegimos como nombres de variable Pino, PINO y PiNo, Matlab las considerará como variables distintas. 
 
-\index{Variable! tipo} En algunos lenguaje, es preciso indicar al ordenador qué tipo de información se guardará en una determinada variable, antes de poder emplearlas. Esto permite manejar la memoria del computador de una manera más eficiente, asignando zonas adecuadas a cada variable, en función del tamaño de la información que guardarán. A este proceso, se le conoce con el nombre de \emph{declaración} de variables. En Matlab no es necesario declarar las variables antes de emplearlas.
+\index{Variable! tipo} En algunos lenguajes, es preciso indicar al ordenador qué tipo de información se guardará en una determinada variable, antes de poder emplearlas. Esto permite manejar la memoria del computador de una manera más eficiente, asignando zonas adecuadas a cada variable, en función del tamaño de la información que guardarán. A este proceso, se le conoce con el nombre de \emph{declaración} de variables. En Matlab no es necesario declarar las variables antes de emplearlas.
 
 El método más elemental de emplear una variable es asignarle la información para la que se creó. Para hacerlo, se emplea el símbolo de asignación \index{"= Símbolo de asignación} \index{Símbolo de asignación}, que coincide con el signo $=$ empleado en matemáticas. Como veremos más adelante la asignación en programación y la igualdad en matemáticas no representan exáctamente lo mismo. La manera de asignar directamente información a una variable es escribir el nombre de la variable, a continuación  el signo de asignación y, por último, la información asignada,
 \begin{verbatim}
@@ -1340,7 +1340,7 @@ B =
 \end{verbatim}
 Las matrices \texttt{A} y \texttt{B} son traspuestas entre sí.
 
-\subsection{Precedencia de los operadores aritméticos}{Operadores!Precedencia}
+\subsection{Precedencia de los operadores aritméticos}\index{Operadores!Precedencia}
 Combinando operadores aritméticos, es posible elaborar expresiones complejas. Por ejemplo,
 \begin{verbatim}
 R=5*3-6/3+2^3+2-4
@@ -1363,8 +1363,8 @@ a continuación el producto y la división
 \end{verbatim}
 Por último sumaría todos los resultados intermedios, y guardaría el resultado en la variable \texttt{R}
 \begin{verbatim}
-15-2+8-4=17
-R=17
+15-2+8+2-4=19
+R=19
 \end{verbatim}
 
 \paragraph{Uso de paréntesis para alterar el orden de precedencia.}
@@ -1408,12 +1408,12 @@ x= \frac{-b\pm(b^2-4\cdot a \cdot c)^{\frac{1}{2}}}{2\cdot a}
 en este caso es preciso dividir el cálculo en dos expresiones, una para la raíz positiva,
 
 \begin{verbatim}
-x=(-b+(b^2-a*c)^(1/2))/(2*a)
+x=(-b+(b^2-4*a*c)^(1/2))/(2*a)
 \end{verbatim}
 y otra para la raíz negativa
 
 \begin{verbatim}
-x=(-b-(b^2-a*c)^(1/2))/(2*a)
+x=(-b-(b^2-4*a*c)^(1/2))/(2*a)
 \end{verbatim}
 
 Es necesario ser cuidadosos a la hora de construir expresiones que incluyen un cierto número de operaciones. Así, en el ejemplo que acabamos de ver, el paréntesis final \texttt{2*a} es necesario; si se omite, Matlab multiplicará por \texttt{a} el resultado de todo lo anterior, en lugar de dividirlo.
@@ -2624,7 +2624,7 @@ K>>
 
 Matlab nos indica que ha detenido la ejecución del programa en la línea marcada por el \emph{breakpoint} (línea 12 en el ejemplo). además vuelve a mostrar el \emph{prompt} en la ventana de comandos, pero esta vez precedido por la letra \texttt{k}, para indicarnos que ha entrado en modo de depuración.
 
-A partir de aquí Matlab pone a nuestra disposición las herramientas de depuración, la figura \ref{fig:depu2} muestra la línea en que se ha parado la ejecución del programa, señalada con una flecha verde, y algunas de estas herraminentas. Básicamente nos da la posibilidad de ejecutar el código paso a paso, de entrar e ir paso a paso en las funciones que llama nuestro programa, o de de continuar la ejecución hasta que el final del programa o hasta el siguiente \emph{brakpoint} activo. Para dominar los detalles del depurador se aconseja leer la ayuda de Matlab.
+A partir de aquí Matlab pone a nuestra disposición las herramientas de depuración, la figura \ref{fig:depu2} muestra la línea en que se ha parado la ejecución del programa, señalada con una flecha verde, y algunas de estas herraminentas. Básicamente nos da la posibilidad de ejecutar el código paso a paso, de entrar e ir paso a paso en las funciones que llama nuestro programa, o de de continuar la ejecución hasta que el final del programa o hasta el siguiente \emph{breakpoint} activo. Para dominar los detalles del depurador se aconseja leer la ayuda de Matlab.
 
 
 \begin{figure}[h]
@@ -2634,7 +2634,7 @@ A partir de aquí Matlab pone a nuestra disposición las herramientas de depuració
 \label{fig:depu2}
 \end{figure}
 
-Si pulsamos el botón  "ejecutar línea actual" Matlab ejecutará la línea de programa señalada con la flecha verde y se parará en la línea siguiente. En cada paso, podemos ver el valor que toman las variables, pidiendo su valor directamente en la ventana de comandos,
+Si pulsamos el botón  ``ejecutar línea actual'' Matlab ejecutará la línea de programa señalada con la flecha verde y se parará en la línea siguiente. En cada paso, podemos ver el valor que toman las variables, pidiendo su valor directamente en la ventana de comandos,
 
 \begin{verbatim}
 K>> a
@@ -4560,3 +4560,131 @@ y calcule un vector con las sumas de los valores pares de los elementos de cada 
 \includegraphics[scale=0.5]{lisa1.eps}
 \caption{vista de la figura con los ocho subplots} \label{fig:1}
 \end{figure}
+
+\section{Test del curso 2021/22}
+\begin{enumerate}
+
+\item  Una partícula cargada de masa $m$ y carga $q$ parte del origen con velocidad inicial
+
+\begin{align}
+x(t) &= \sin(2 \pi \, \omega_1 t)\\
+y(t) &= \cos(2 \pi \, \omega_2 t)\\
+z(t) &= a\cos(2\pi \, \omega_1 t) \label{eq:3}
+\end{align}
+
+donde $x,y,z$ representan las coordenadas del cuerpo en el instante de tiempo $t$ medidas en metros,  $w_1$ y $w_2$ son frecuencias fijas medidas en $rad\cdot s^{-1}$ y $a$ es una amplitud fija medida en metros.
+
+\begin{enumerate}
+	\item \label{ap1} (\textbf{1.5 puntos}) Escribe una función que:
+	
+	\begin{enumerate}
+		\item Tome como variables de entrada las frecuencias $w_1$, $w_2$, la amplitud $a$ .
+		\item Haga el cálculo de la trayectoria en tres dimensiones descrita por el cuerpo en el intervalo de tiempo $[0,1]$. Considera incrementos de tiempo de $0.01s$.
+		\item Dibuje en una gráfica la trayectoria descrita por el cuerpo en el espacio. Cada eje del gráfico deberá llevar  una etiqueta indicando de qué variable se trata $x$, $y$ ó $z$.
+		\item La salida serán tres vectores con los valores de $x$, $y$ y $z$ calculados para cada instante de tiempo.
+	\end{enumerate}
+	
+	\item (\textbf{1.5 puntos}) Añade a la función creada en el apartado anterior el código necesario para que:
+	\begin{enumerate}
+		\item \textbf{Solo si} se le dan dos variables de entrada en lugar de tres, entonces calcule la trayectoria que describiría el cuerpo en el plano si se eliminara la ecuación (\ref{eq:3}) de las ecuaciones del sistema. (NOTA: La función debe seguir funcionando igual que en el apartado anterior si se le dan tres entradas. Emplea el comando nargin).
+		\item El resultado deberá también representarse gráficamente, pero solo en dos dimensiones, y devolver la variable $z$ como un vector vacío. 
+	\end{enumerate}
+	
+	\item \label{ap2} (\textbf{1.5 puntos}) Crea un un \emph{live script} que genere dos  vectores de frecuencias: \texttt{W1} y \texttt{W2} de  modo que el primero contenga los números impares comprendidos entre $1$ y $7$ y el segundo los números pares comprendidos entres $2$ y $8$.  Emplea la función creada en el apartado anterior para calcular el valor de las trayectorias obtenidas tomando como entradas para  $\omega_1, \omega_2$,  todos los pares posibles de la forma: \texttt{W1(i)} y \texttt{W2(j)}. Supón que no hay tercera entrada $a$. Realiza los cálculos empleando bucles.
+	
+	\item (\textbf{1 punto}) Añade a tu programa el código necesario para que dibuje cada resultado en un \emph{subplot} de modo que la figura resultante tenga $4\times4$ \emph{subplots} (ver figura al dorso).  Debes crear los \emph{subplots} empleando los mismos bucles del apartados anterior. 
+	
+	\item (\textbf{0.5 puntos}) Repite los cálculos de los apartados c) y d) pero tomando ahora $a=1$.
+\end{enumerate}
+
+\item Una matriz cuadrada $A$, de dimensión arbitraria $(n\times n)$, cuyos elementos $a_{ij} \in \mathbb{Z}$, se define como \emph{buenrollista} cuando las suma de los valores pares de cada fila es mayor o igual que la suma de los valores  impares de la columna correspondiente, i.e., satisface la siguiente relación:
+\begin{equation}
+\sum_{j=1}^n a_{ij\text{(par)}} \geq \sum_{j=1}^n a_{ji\text{(impar)}}, \quad \forall i\in\{1,...,n\}
+\end{equation}
+
+\begin{enumerate}
+	\item (\textbf{1.5 puntos}) Escribe  una función que tome como variable de entrada una matriz cuadrada de cualquier dimensión 
+	y calcule un vector con las sumas de los valores pares de los elementos de cada una de su filas  y otro vector con las sumas de los elementos impares de cada una de sus columnas.
+	\item (\textbf{1.5 puntos}) Añade a la función anterior el código necesario para que compruebe, empleando los vectores obtenidos en el apartado anterior, si la función es \emph{buenrollista} y muestre un mensaje por pantalla indicando si lo es o no.
+	\item (\textbf{1 punto}) Aplica la función desarrollada a la siguiente matriz:
+	\begin{equation*}
+	\begin{pmatrix}
+	2&3&4&6&1\\
+	5&4&-2&3&0\\
+	4&-1&5&4&-6\\
+	4&2&4&5&8\\
+	3&0&-3&-3&6
+	\end{pmatrix}
+	\end{equation*}
+\end{enumerate}
+\end{enumerate}
+
+
+
+\section{Test del curso 2022/23}
+\begin{enumerate}
+	
+	
+	
+	
+	\item Las ecuaciones paramétricas que definen el movimiento de una partícula en el espacio son las siguientes:
+	\begin{align*}
+	x &= r\cdot\sin(t)\\
+	y &= r\cdot\cos(t) \\
+	z &= 2\cdot t
+	\end{align*}
+	
+	Donde $t \in \mathbb{R}^+$ representa el tiempo transcurrido desde el inicio del movimiento, $x,y,z \in \mathbb{R}$ son las coordenadas del vector posición de la partícula en $\mathbb{R}^3$ y $r \in \mathbb{R}$ representa un parámetro fijo.
+	
+	\begin{enumerate}
+		\item \label{ap5} (\textbf{1 punto}) Para $r=4$ y $0\leq t \leq 10\cdot \pi$ dibuja la trayectoria de la partícula en el espacio. Pon título a la gráfica y etiquetas a todos los ejes.
+		\item \label{ap6} (\textbf{1 punto}) Empleando el comando \textit{subplot}, dibuja la trayectoria de la partícula para cada uno de los valores de $r=[1 ,4 ,8 ,12]$. Pon título a cada gráfica.
+		\item \label{ap6} (\textbf{2 puntos}) Usando el comando \textit{quiver3} dibuja el vector de la velocidad de la partícula para $t=[\pi, 2 \pi, 4\pi ,6\pi]$ en la gráfica de $r=12$. Recuerda que $v_x=\frac{dx}{dt}$, $v_y=\frac{dy}{dt}$ y $v_z=\frac{dz}{dt}$
+		
+	\end{enumerate}
+	
+	\item  Una terna pitagórica es un conjunto de tres números $a, b, c \in \mathbb{Z}^+ \vert a^2+b^2=c^2$. La terna se llama primitiva si el máximo común divisor de $a,b\  \text{y}\ c$ es $1$ 
+	
+	Dados dos números $m,n \in \mathbb{Z}^+ \vert m>n$ Si construimos $a$, $b$ y $c$ como,
+	\begin{align*}
+	a &=m^2 -n^2\\
+	b &= 2m\cdot n\\
+	c &= m^2 + n^2\\
+	\end{align*}
+	constituyen una terna pitagórica. Si además $m$ y $n$ son coprimos ($m$ no es divisible por $n$) y uno de ellos es par, la terna resultante es una terna primitiva\footnote{El último teorema de Fermat, postulado por Pierre de Fermat alrededor de 1637, plantea que no existen ternas no triviales análogas a las ternas pitagóricas, para exponentes mayores que dos. Es decir La ecuación $x^n+y^n=z^n$
+		no tiene solución si $n>2$ con $x$, $y$, $z$, $n$ naturales. Sin demostración durante más de 300 años, Andrew Wiles consiguió demostrarlo en 1995.}.
+	
+	\begin{enumerate}
+		\item \label{ap1}(\textbf{1 punto}) Escribe una función en matlab que tome como variable de entrada dos números enteros positivos $m,n : m>n$, y devuelva como variable de salida un vector $v= [a, b, c, d]$ de modo que los tres primeros valores correspondan a los valores $a,b,c$ de la terna pitagórica generada por $m$ y $n$. El cuarto valor del vector, $d$, valdrá $1$ si la terna generada es primitiva y $0$ en caso contrario. 
+		El programa deberá comprobar que las variables de entrada cumplen la condición $m>n$ y si no la cumplen terminar la ejecución y dar un mensaje de error.
+		\item (\textbf{1 punto}) Crea una segunda función que llame a la del apartado \ref{ap1}) y calcule las ternas pitagóricas para $n$ un número par cualquiera y los $l$ primeros números primos mayores que $n$. Los resultados deberá devolverlos en una matriz de dimensión $l\times 3$ en la que cada fila contendrá los elementos $a,b,c$ de cada una de las ternas generadas. Obtén la matriz resultante para $n=4$ y $l=10$. \textbf{Puedes usar la función \textit{isprime} de matlab, pero en ese caso este apartado valdrá $0.5$ puntos en lugar de 1. }
+	\end{enumerate}
+	
+	\item Tenemos el siguiente grafo $\mathcal{G = \mathcal(V,A)}$ que describe las conexiones de la futura línea de metro de Númenor. 
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.3\textwidth]{grafo.png}
+	\end{figure}
+	
+	Cada estación se ha representado como un vértice del grafo, $\mathcal{V} = \{1,2,3,4,5,6\}$. Las conexiones directas entre dos estaciones se representan como aristas que unen los correspondientes vértices, $\mathcal{A}=\{\cdots,(i,j),\cdots\}\vert i,j \in \mathcal{V}$. Además, el grafo se considera no dirigido, es decir, $(i,j)\in \mathcal{A} \Rightarrow (j,i) \in \mathcal{A}$. Podemos describir este grafo con una matriz (que se llama \textbf{matriz Laplaciana})  de la siguiente manera:
+	\begin{equation}
+	l_{i,j}=\left\{
+	\begin{array}{ll}
+	\kappa_i  & \mbox{si } i =j \\
+	-1 & 		\mbox{si } i \neq j \mbox{ e } i \mbox{ es adyacente a } j\\
+	0 & \mbox{en otro caso}
+	\end{array}
+	\right.
+	\end{equation}
+	donde $\kappa_i$ es el grado del vértice $i$, es decir, el número de aristas que salen de dicho vértice.
+	
+	
+	\begin{enumerate}
+		\item \label{ap1} (\textbf{1 punto}) Escribe la matriz laplaciana del grafo del futuro metro de Númenor.
+		\item \label{ap3} (\textbf{1 punto}) La matriz de adyacencia de un grafo es una matriz $ \mathcal{B}$ donde cada elemento $b_{i,j}=1$ si y solo si existe una arista entre los vértices $i$ y $j$, en otro caso $b_{i,j}=0$. Crea una función que, dada la matriz laplaciana de un grafo, devuelva la matriz de adyacencia $ \mathcal{B}$. 
+		\item \label{ap4} (\textbf{1 punto}) Crea también una función que dada la matriz de adyacencia de un grafo devuelva su matriz laplaciana. 
+		\item \label{ap2} (\textbf{1 punto}) Por construcción, la suma de los elementos de cada fila de una matriz laplaciana es cero. Además en una matriz laplaciana los elementos que no están en la diagonal sólo pueden valer $0$ ó $-1$. Programa una función que dada una matriz cualesquiera compruebe estas dos condiciones anteriores. Si se cumplen ha de devolver un vector con los elementos de la diagonal y si no se cumplen un vector de ceros adecuado a las dimensiones de la matriz introducida.
+		
+	\end{enumerate}
+	%
+\end{enumerate}
